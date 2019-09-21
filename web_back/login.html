@@ -56,34 +56,25 @@
     <script src="./js/utils/user.js"></script>
 
     <script>
-      // 思路
-      // 给按钮添加点击事件
-      // 1. 收集用户的信息，进行简单的判断
-      // 2. ajax请求
-      // 3. 根据结果给反馈
+    //  给按钮添加点击事件
+    // 1、收集用户的信息，进行简单判断 
+    // 2、发送ajax请求 
+    // 3、根据结果给反馈 
 
-      $('#btnLogin').click(function() {
-        var userName = $('#userName').val();
-        var password = $('#password').val();
-        console.log(userName, password);
-        if (userName === '' || password === '') {
-          $('#pResult').html('用户名和密码不能为空！');
-          $('.modal').modal('show');
-          //   alert('心太大了');
-        } else {
-          user.login(userName, password, function(res) {
-            console.log(res);
-            if (res.code === 200) {
-              //   alert('ok');
-              window.location.href = './index.html';
-            } else {
-              //   alert(res.msg);
-              $('#pResult').html(res.msg);
-              $('.modal').modal('show');
-            }
-          });
-        }
-      });
+    $('#btnLogin').click(function(){
+      // 获取用户输入信息
+      var userName = $('#userName').val();
+      var password = $('#password').val();
+      console.log(userName,password);
+
+      if(userName === '' || password === ''){
+        $('#pResult').html('用户名和密码不能为空');
+      }
+
+    })
     </script>
+   
+
+    
   </body>
 </html>
