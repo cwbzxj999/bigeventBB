@@ -10,10 +10,29 @@
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/iconfont.css" />
   <link rel="stylesheet" href="css/main.css" />
-  <script src="js/lib/jquery-1.12.4.min.js"></script>
+  <script src="./js/lib/jquery-1.12.4.min.js"></script>
+  <script src="./js/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+  <div class="modal fade" tabindex="-1" role="dialog" id="goModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">错误提示</h4>
+        </div>
+        <div class="modal-body">
+          <p id="pResult"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClose">关闭</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
   <div class="sider">
     <a href="#" class="logo"><img src="images/logo02.png" alt="logo" /></a>
     <div class="user_info">
@@ -165,13 +184,15 @@
     // 1.调用 退出功能
     $('#btnLogout').click(function () {
       // todos:用模态框来代替
-      if (window.confirm('确定要退出吗？')) {
+      $('#pResult').html('确定要退出嘛~');
+      $('#goModal').modal('show');
+      $('#btnClose').click(function () {
         user.logout(function (res) {
           if (res.code == 200) {
             window.location.href = './login.html';
           }
         });
-      }
+      });
     });
   </script>
 </body>
